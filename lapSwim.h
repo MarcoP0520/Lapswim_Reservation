@@ -12,8 +12,9 @@ class swimmingLane {
 public:
     swimmingLane();
     ~swimmingLane();
-    void organize(int arr[]);
-    void display();
+    void addlist(int value);
+    void Emptydisplay();
+    void Reserveddisplay();
     void addLane(int lane);
     void removeLane(int lane);
     bool isLane(int lane);
@@ -29,12 +30,63 @@ private:
     Node* head;
     Node* tail;
     Node* prev;
-    Node* curr;
+    Node* itercurr;
     int lanetrack[MAX_LANES];
-    int user_lane;
-    int totalLanes;
+    int userChoice;
+    int totallanes;
 };
 
-#include "lapSwim.cpp"
+//Definitions
+template<class T>
+swimmingLane<T>::swimmingLane() {
+    head = nullptr;
+    tail = nullptr;
+    itercurr = nullptr;
+    totallanes = 0;
+    userChoice = 0;
+    for (int i = 0; i < MAX_LANES; i++) {
+        lanetrack[i] = 0;
+    }
+}
+
+template<class T>
+swimmingLane<T>::~swimmingLane() {
+
+
+}
+
+
+template<class T>
+void swimmingLane<T>::Emptydisplay() {
+}
+
+template<class T>
+void swimmingLane<T>::Reserveddisplay() {
+}
+
+template<class T>
+void swimmingLane<T>::addLane(int lane) {
+}
+
+template<class T>
+void swimmingLane<T>::removeLane(int lane) {
+}
+
+template<class T>
+bool swimmingLane<T>::isLane(int lane) {
+    return false;
+}
+
+template<class T>
+int swimmingLane<T>::returnLane() {
+    return 0;
+}
+
+template<class T>
+int swimmingLane<T>::password() {
+    return 1234;
+
+}
+
 
 #endif // LAPSWIM_H
