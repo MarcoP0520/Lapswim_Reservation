@@ -51,7 +51,7 @@ swimmingLane<T>::swimmingLane() {
 
 template<class T>
 swimmingLane<T>::~swimmingLane() {
-
+.
 
 }
 
