@@ -1,46 +1,46 @@
-#include "lapSwim.h"
+//
+// Created by marco on 9/24/2024.
+//
+#include "poolTracker.h"
+
+
 
 template<class T>
-swimmingLane<T>::swimmingLane() {
-    head = nullptr;
-    tail = nullptr;
-    itercurr = nullptr;
-    totallanes = 0;
+SwimLanes<T>::SwimLanes() {
+
     userChoice = 0;
-    for (int i = 0; i < MAX_LANES; i++) {
-        lanetrack[i] = 0;
-    }
+
 }
 
 template<class T>
-swimmingLane<T>::~swimmingLane() {}
+SwimLanes<T>::~SwimLanes() {}
 
 template<class T>
-void swimmingLane<T>::Emptydisplay() {}
+void SwimLanes<T>::Emptydisplay() {}
 
 template<class T>
-void swimmingLane<T>::Reserveddisplay() {}
+void SwimLanes<T>::Reserveddisplay() {}
 
 template<class T>
-void swimmingLane<T>::addLane(int lane) {}
+void SwimLanes<T>::addLane(int lane) {}
 
 template<class T>
-void swimmingLane<T>::removeLane(int lane) {}
+void SwimLanes<T>::removeLane(int lane) {}
 
 template<class T>
-bool swimmingLane<T>::isLane(int lane) {
+bool SwimLanes<T>::empty() {
     return false;
 }
 
 template<class T>
-int swimmingLane<T>::returnLane() {
+int SwimLanes<T>::returnLane() {
     return 0;
 }
 
 template<class T>
-int swimmingLane<T>::password() {
+int SwimLanes<T>::password() {
     return 1234;
 }
 
 
-template class swimmingLane<int>;
+template class SwimLanes<int>;

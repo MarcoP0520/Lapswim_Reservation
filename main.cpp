@@ -1,8 +1,11 @@
-#include "lapSwim.h"
+//
+// Created by marco on 9/24/2024.
+//
+#include "poolTracker.h"
 
 
 int main() {
-swimmingLane<int> classLane;
+SwimLanes<int> classLane;
 
 
 }
