@@ -36,13 +36,25 @@ class WaitList {
 class alreadyreserved {
 public:
     string Msg() {
-        return "Lane Already Reserved";
+        return "Lane Unavailable";
+    }
+};
+class notreserved {
+    public:
+    string Msg() {
+        return "No reservation in this lane";
     }
 };
 class invalidpassword {
 public:
     string Msg() {
-        return "Invalid Password. Only use digits";
+        return "Invalid Password, too many failed attempts";
+    }
+};
+class incorrectpassword {
+    public:
+    string Msg() {
+        return "Incorrect Password, too many failed attempts";
     }
 };
 
@@ -54,15 +66,18 @@ public:
     ~SwimLanes();
     void Emptydisplay();
     void Reserveddisplay();
-    void addrsrv(int lane,string name, int password);
+    void addrsrv(int lane);
     void removeLane(int lane);
     bool empty();
-    int returnLane();
-    int password();
+    void screenClear();
+    bool validLane(int lane);
+    string password();
+    bool askpassword(int lane);
 
 private:
 
-    int tracker[2][MAX_LANES];
+    string tracker[3][MAX_LANES-1];
+    string pass;
     int total;
 
     //
