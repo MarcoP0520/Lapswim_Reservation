@@ -1,0 +1,3 @@
+C:/Users/marco/CLionProjects/Lapswim_Reservation/cmake-build-debug/CMakeFiles/Lapswim_Reservation.dir
+C:/Users/marco/CLionProjects/Lapswim_Reservation/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/marco/CLionProjects/Lapswim_Reservation/cmake-build-debug/CMakeFiles/rebuild_cache.dir
