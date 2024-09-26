@@ -5,7 +5,6 @@
 
 
 int main() {
-SwimLanes<int> classLane;
-
-
+    SwimLanes<int> swimLanes;
+    WaitList<int> waitList;
 }

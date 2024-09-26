@@ -7,16 +7,18 @@
 #include <iostream>
 using namespace std;
 
+
 const int MAX_LANES = 5;
+
 
 template<class T>
 class WaitList {
     public:
     WaitList();
     ~WaitList();
-    void add_waitlist(string n);
-    void remove_waitlist(string n);
-    int get_waitlist();
+    void add_waitlist(string name);
+    void remove_waitlist(string name);
+    int get_total();
     bool empty();
     private:
     struct Node {
@@ -30,25 +32,43 @@ class WaitList {
 
 };
 
+//SwimLane Error Messages
+class alreadyreserved {
+public:
+    string Msg() {
+        return "Lane Already Reserved";
+    }
+};
+class invalidpassword {
+public:
+    string Msg() {
+        return "Invalid Password. Only use digits";
+    }
+};
+
+//SwimLane Class
 template<class T>
 class SwimLanes {
 public:
     SwimLanes();
     ~SwimLanes();
-    void addlist(int value);
     void Emptydisplay();
     void Reserveddisplay();
-    void addLane(int lane);
+    void addrsrv(int lane,string name, int password);
     void removeLane(int lane);
     bool empty();
     int returnLane();
     int password();
 
 private:
-    int tracker[3][MAX_LANES];
-    string name;
-    int userChoice;
+
+    int tracker[2][MAX_LANES];
     int total;
+
+    //
+    int lane_row = 0;
+    int name_row = 1;
+    int pass_row = 2;
 };
 
 

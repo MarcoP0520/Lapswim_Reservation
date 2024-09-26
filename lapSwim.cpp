@@ -7,29 +7,45 @@
 
 template<class T>
 SwimLanes<T>::SwimLanes() {
+    for(int i = 0; i < MAX_LANES; i++) {
+            tracker[lane_row][i] = 0;
+    }
+    total = 0;
+}
 
-    userChoice = 0;
+template<class T>
+SwimLanes<T>::~SwimLanes() {
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < MAX_LANES; j++) {
+            tracker[i][j] = 0;
+        }
+    }
+}
+
+template<class T>
+void SwimLanes<T>::Emptydisplay() {
 
 }
 
 template<class T>
-SwimLanes<T>::~SwimLanes() {}
+void SwimLanes<T>::Reserveddisplay() {
+
+}
 
 template<class T>
-void SwimLanes<T>::Emptydisplay() {}
+void SwimLanes<T>::addrsrv(int lane,string name, int password) {
+
+}
 
 template<class T>
-void SwimLanes<T>::Reserveddisplay() {}
+void SwimLanes<T>::removeLane(int lane) {
 
-template<class T>
-void SwimLanes<T>::addLane(int lane) {}
-
-template<class T>
-void SwimLanes<T>::removeLane(int lane) {}
+}
 
 template<class T>
 bool SwimLanes<T>::empty() {
-    return false;
+
+
 }
 
 template<class T>
