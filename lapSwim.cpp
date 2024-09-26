@@ -13,14 +13,6 @@ SwimLanes<T>::SwimLanes() {
     total = 0;
 }
 
-template<class T>
-SwimLanes<T>::~SwimLanes() {
-    for(int i = 0; i < 2; i++) {
-        for(int j = 0; j < MAX_LANES; j++) {
-            tracker[i][j] = 0;
-        }
-    }
-}
 
 template<class T>
 void SwimLanes<T>::Emptydisplay() {

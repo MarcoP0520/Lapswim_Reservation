@@ -51,7 +51,6 @@ template<class T>
 class SwimLanes {
 public:
     SwimLanes();
-    ~SwimLanes();
     void Emptydisplay();
     void Reserveddisplay();
     void addrsrv(int lane,string name, int password);
