@@ -16,25 +16,44 @@ const int MAX_LANES = 5;
 class alreadyreserved {
 public:
     string Msg() {
-        return "Lane Unavailable";
+        return "Lane Unavailable\n";
     }
 };
 class notreserved {
 public:
     string Msg() {
-        return "No reservation in this lane";
+        return "No reservation in this lane\n";
     }
 };
 class invalidpassword {
 public:
     string Msg() {
-        return "Invalid Password, too many failed attempts";
+        return "Invalid Password, too many failed attempts\n";
     }
 };
 class incorrectpassword {
 public:
     string Msg() {
-        return "Incorrect Password, too many failed attempts";
+        return "Incorrect Password, too many failed attempts\n";
+    }
+};
+class namenotfound {
+    public:
+    string Msg() {
+        return "Name not found\n";
+    }
+};
+class isempty {
+    public:
+    string Msg() {
+        return "Waitlist is empty\n";
+    }
+};
+class waitlistfull {
+
+    public:
+    string Msg() {
+        return "Sorry Waitlist is full, Try again later \n";
     }
 };
 
@@ -44,19 +63,22 @@ class WaitList {
     public:
     WaitList();
     ~WaitList();
+    void displayWaitList();
     void add_waitlist(string name);
-    void remove_waitlist(string name);
-    int get_total();
+    void remove_waitlist();
+    bool isFull();
+    bool contains(string name);
     bool empty();
     private:
     struct Node {
         string name;
         Node* next;
+        Node* prev;
     };
     Node* head;
     Node* tail;
-    Node* prev;
     Node* itercurr;
+    int total;
 
 };
 
