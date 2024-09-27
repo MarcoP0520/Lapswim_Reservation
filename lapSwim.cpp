@@ -7,8 +7,10 @@
 
 template<class T>
 SwimLanes<T>::SwimLanes() {
-    for(int i = 0; i < MAX_LANES; i++) {
-            tracker[lane_row][i] = "";
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < MAX_LANES; j++) {
+            tracker[i][j] = "";
+        }
     }
     total = 0;
 }
@@ -23,14 +25,17 @@ SwimLanes<T>::~SwimLanes() {
 }
 
 template<class T>
-void SwimLanes<T>::Emptydisplay() {
-
+void SwimLanes<T>::displayEmpty(int lane) {
+    std::cout<<"                               ------------------------------------------\n";
+    std::cout<<"Lane: "<<lane+1<<"                                          EMPTY\n";
+    std::cout<<"                               -------------------------------------------\n";
 }
 
 template<class T>
-void SwimLanes<T>::Reserveddisplay() {
-
-
+void SwimLanes<T>::displayRsrvd(int lane) {
+    std::cout<<"                               ------------------------------------------\n";
+    std::cout<<"Lane: "<<lane+1<<"                        /////////////////Reserved//////////////////   -"<< tracker[name_row][lane]<<"\n";
+    std::cout<<"                               -------------------------------------------\n";
 }
 
 template<class T>
@@ -39,7 +44,7 @@ void SwimLanes<T>::addrsrv(int lane) {
   if(!validLane(lane)) {
       throw alreadyreserved();
   }
-    cout<<"Enter Name: "<<endl;
+    cout<<"Enter Name: ";
     cin>>name;
     pass = password();
 
@@ -48,16 +53,11 @@ void SwimLanes<T>::addrsrv(int lane) {
     tracker[pass_row][lane-1]= pass;
 
     total++;
+    screenClear();
     cout<<"         Lane "<<lane<<" has been reserved!"<<endl;
     cout<<"                   have a great swim "<< name<<endl;
+    this_thread::sleep_for(chrono::seconds(4));
     screenClear();
-
-    for(int i = 0; i <= 3; i++) {
-        for(int j = 0; j < MAX_LANES; j++) {
-            cout<<tracker[i][j]<<". ";
-        }
-        cout<<endl;
-    }
 }
 
 template<class T>
@@ -69,7 +69,12 @@ void SwimLanes<T>::removeLane(int lane) {
        tracker[lane_row][lane-1]= "";
        tracker[name_row][lane-1]= "";
        total--;
+       screenClear();
        cout<<"Reservation has been removed, Have a great day!"<<endl;
+       this_thread::sleep_for(chrono::seconds(4));
+       screenClear();
+
+
    }
 }
 
@@ -85,14 +90,13 @@ void SwimLanes<T>::screenClear() {
 
 template<class T>
 bool SwimLanes<T>::validLane(int lane) {
-    if(lane > MAX_LANES) {
+    if(lane > MAX_LANES || lane < 1) {
         return false;
     }
-    for(int i = 0; i < MAX_LANES; i++) {
-        if (tracker[lane_row][i]==to_string(lane-1)) {
+    if(tracker[lane_row][lane-1]!="") {
             return false;
-        }
     }
+
     return true;
 }
 
@@ -133,13 +137,12 @@ string SwimLanes<T>::password() {
 
 template<class T>
 bool SwimLanes<T>::askpassword(int lane) {
-    bool correctPass = false;
     int correctCheck = 0;
-    while(correctPass == false|| correctCheck == 3) {
+    while(correctCheck != 3) {
         cout<<"Enter password: "<<endl;
         cin>>pass;
         if(pass == tracker[pass_row][lane-1]) {
-            correctPass = true;
+            return true;
         }
         correctCheck++;
     }

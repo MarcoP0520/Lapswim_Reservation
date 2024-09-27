@@ -5,6 +5,8 @@
 #define POOLTRACKER_H
 
 #include <iostream>
+#include <chrono>
+#include <thread>
 using namespace std;
 
 
@@ -63,8 +65,11 @@ template<class T>
 class SwimLanes {
 public:
     SwimLanes();
-    void Emptydisplay();
-    void Reserveddisplay();
+
+    ~SwimLanes();
+
+    void displayEmpty(int lane);
+    void displayRsrvd(int lane);
     void addrsrv(int lane);
     void removeLane(int lane);
     bool empty();
@@ -75,11 +80,11 @@ public:
 
 private:
 
-    string tracker[3][MAX_LANES-1];
+    string tracker[3][MAX_LANES];
     string pass;
     int total;
 
-    //
+    //rows for 2d list
     int lane_row = 0;
     int name_row = 1;
     int pass_row = 2;
