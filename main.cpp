@@ -7,10 +7,27 @@
 int main() {
     SwimLanes<int> swimLanes;
     WaitList<int> waitList;
-    int lane = 1;
-
-    swimLanes.addrsrv(lane);
 
 
 
+    try {
+        swimLanes.addrsrv(1);
+    }
+    catch(alreadyreserved error) {
+        cout<<error.Msg()<<endl;
+    }
+    catch(invalidpassword error) {
+        cout<<error.Msg()<<endl;
+    }
+    swimLanes.displayRsrvd(0);
+    try {
+        swimLanes.removeLane(1);
+    }
+    catch(notreserved error) {
+        cout<<error.Msg()<<endl;
+    }
+    catch(incorrectpassword error) {
+        cout<<error.Msg()<<endl;
+    }
+    main();
 }
