@@ -7,4 +7,10 @@
 int main() {
     SwimLanes<int> swimLanes;
     WaitList<int> waitList;
+    int lane = 1;
+
+    swimLanes.addrsrv(lane);
+
+
+
 }
