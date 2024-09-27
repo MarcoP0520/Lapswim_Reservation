@@ -37,6 +37,18 @@ void SwimLanes<T>::displayRsrvd(int lane) {
     std::cout<<"Lane: "<<lane+1<<"                        /////////////////Reserved//////////////////   -"<< tracker[name_row][lane]<<"\n";
     std::cout<<"                               -------------------------------------------\n";
 }
+template<class T>
+void SwimLanes<T>::displayLanes() {
+    for(int i = 0; i < MAX_LANES; i++) {
+        if(tracker[lane_row][i] == "") {
+            displayEmpty(i);
+        }
+        if(tracker[lane_row][i] != "") {
+            displayRsrvd(i);
+        }
+    }
+}
+
 
 template<class T>
 void SwimLanes<T>::addrsrv(int lane) {
@@ -85,7 +97,7 @@ bool SwimLanes<T>::empty() {
 
 template<class T>
 void SwimLanes<T>::screenClear() {
-    cout<<"\n\n\n\n\n\n\n"<<endl;
+    cout<<"\n\n\n\n\n\n\n\n\n\n\n\n"<<endl;
 }
 
 template<class T>
@@ -112,6 +124,7 @@ string SwimLanes<T>::password() {
         // Check length of password
         if (password.length() != 4) {
             cout << "Invalid password length. It must be exactly 4 digits." << endl;
+            this_thread::sleep_for(chrono::seconds(3));
             loop_count++;
             continue;
         }
@@ -120,6 +133,7 @@ string SwimLanes<T>::password() {
         for (int i = 0; i < password.length(); i++) {
             if (!isdigit(password[i])) {
                 cout << "Password can only contain numbers." << endl;
+                this_thread::sleep_for(chrono::seconds(3));
                 isValid = false;
                 break;
             }
@@ -144,6 +158,10 @@ bool SwimLanes<T>::askpassword(int lane) {
         if(pass == tracker[pass_row][lane-1]) {
             return true;
         }
+        screenClear();
+        cout<<"Incorrect password"<<endl;
+        this_thread::sleep_for(chrono::seconds(3));
+        screenClear();
         correctCheck++;
     }
     throw incorrectpassword();

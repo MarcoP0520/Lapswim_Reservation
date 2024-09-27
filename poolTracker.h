@@ -12,6 +12,32 @@ using namespace std;
 
 const int MAX_LANES = 5;
 
+//SwimLane Error Messages
+class alreadyreserved {
+public:
+    string Msg() {
+        return "Lane Unavailable";
+    }
+};
+class notreserved {
+public:
+    string Msg() {
+        return "No reservation in this lane";
+    }
+};
+class invalidpassword {
+public:
+    string Msg() {
+        return "Invalid Password, too many failed attempts";
+    }
+};
+class incorrectpassword {
+public:
+    string Msg() {
+        return "Incorrect Password, too many failed attempts";
+    }
+};
+
 
 template<class T>
 class WaitList {
@@ -34,31 +60,7 @@ class WaitList {
 
 };
 
-//SwimLane Error Messages
-class alreadyreserved {
-public:
-    string Msg() {
-        return "Lane Unavailable";
-    }
-};
-class notreserved {
-    public:
-    string Msg() {
-        return "No reservation in this lane";
-    }
-};
-class invalidpassword {
-public:
-    string Msg() {
-        return "Invalid Password, too many failed attempts";
-    }
-};
-class incorrectpassword {
-    public:
-    string Msg() {
-        return "Incorrect Password, too many failed attempts";
-    }
-};
+
 
 //SwimLane Class
 template<class T>
@@ -70,6 +72,7 @@ public:
 
     void displayEmpty(int lane);
     void displayRsrvd(int lane);
+    void displayLanes();
     void addrsrv(int lane);
     void removeLane(int lane);
     bool empty();
