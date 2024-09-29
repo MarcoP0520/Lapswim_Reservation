@@ -9,8 +9,24 @@
 #include <thread>
 using namespace std;
 
+const string exitcode = "3x1t";
+const int MAX_LANES = 1;
 
-const int MAX_LANES = 5;
+
+inline void displayOptions(){
+    std::cout<<"\n\n                                                     ----------------------\n";
+    std::cout<<"                                                     Public Community Pool\n";
+    std::cout<<"                                                     ----------------------\n\n";
+    std::cout<<"                                                       ---------------\n";
+    std::cout<<"                                                       [Reserve a Lane] - 'reserve'\n";
+    std::cout<<"                                                       ---------------\n\n";
+    std::cout<<"                                                     --------------------\n";
+    std::cout<<"                                                     [Close a reservation]- 'close'\n";
+    std::cout<<"                                                     --------------------\n\n";
+    std::cout<<"                                                     --------------------\n";
+    std::cout<<"                                                     [View the Wait list]- 'waitlist'\n";
+    std::cout<<"                                                     --------------------\n\n\n\n";
+}
 
 //SwimLane Error Messages
 class alreadyreserved {
@@ -58,15 +74,16 @@ class waitlistfull {
 };
 
 
+
 template<class T>
 class WaitList {
     public:
     WaitList();
     ~WaitList();
     void displayWaitList();
-    void add_waitlist(string name);
-    void remove_waitlist();
-    bool isFull();
+    void add_waitlist();
+    string remove_waitlist();
+    bool full();
     bool contains(string name);
     bool empty();
     private:
@@ -98,6 +115,7 @@ public:
     void addrsrv(int lane);
     void removeLane(int lane);
     bool empty();
+    bool full();
     void screenClear();
     bool validLane(int lane);
     string password();
