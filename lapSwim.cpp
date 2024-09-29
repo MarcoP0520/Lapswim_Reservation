@@ -89,11 +89,17 @@ void SwimLanes<T>::removeLane(int lane) {
 
    }
 }
+template<class T>
+bool SwimLanes<T>::full() {
+    return total >= MAX_LANES;
+}
 
 template<class T>
 bool SwimLanes<T>::empty() {
     return total == 0;
 }
+
+
 
 template<class T>
 void SwimLanes<T>::screenClear() {
