@@ -53,10 +53,13 @@ bool WaitList<T>::contains(string name) {
 }
 
 template<class T>
-void WaitList<T>::add_waitlist(string name) {
-    if(isFull()) {
+void WaitList<T>::add_waitlist() {
+    if(full()) {
         throw waitlistfull();
     }
+    string name;
+    cout<<"Enter name to join waitlist:  ";
+    cin>>name;
 
     Node* newNode = new Node();
     newNode->name = name;
@@ -77,25 +80,29 @@ void WaitList<T>::add_waitlist(string name) {
 }
 
 template<class T>
-void WaitList<T>::remove_waitlist() {
+string WaitList<T>::remove_waitlist() {
     if(empty()) {
         throw isempty();
     }
+
     Node* tmp = head;
+    string name = tmp->name;
+    cout<<name<<", you are now up,\n ";
     if(tmp->next != nullptr) {
         head = tmp->next;
         delete tmp;
         --total;
-        return;
+        return name;
     }
     delete tmp;
     head = nullptr;
     tail = nullptr;
     --total;
+    return name;
 }
 
 template<class T>
-bool WaitList<T>::isFull() {
+bool WaitList<T>::full() {
     return total >= MAX_LANES;
 }
 
